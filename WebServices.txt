@@ -1,0 +1,46 @@
+Web services are XML-based information exchange systems that use the Internet for direct application-to-application interaction.
+A web service is a collection of open protocols and standards used for exchanging data between applications or systems.
+Web service is not tied to any one operating system or programming language.
+
+Components of Web Services -
+The basic web services platform is XML + HTTP. All the standard web services work using the following components −
+SOAP (Simple Object Access Protocol) - SOAP is a simple XML-based protocol that allows applications to exchange information over HTTP.
+UDDI (Universal Description, Discovery and Integration) - UDDI is an XML-based standard for describing, publishing, and finding web services.
+WSDL (Web Services Description Language) - WSDL is an XML-based language for describing web services and how to access them.
+
+Example -
+Consider a simple account-management and order processing system. The accounting personnel use a client application built with Visual Basic or JSP to create new
+accounts and enter new customer orders.
+The processing logic for this system is written in Java and resides on a Solaris machine, which also interacts with a database to store information.
+The steps to perform this operation are as follows:
+The client program bundles the account registration information into a SOAP message.
+This SOAP message is sent to the web service as the body of an HTTP POST request.
+The web service unpacks the SOAP request and converts it into a command that the application can understand.
+The application processes the information as required and responds with a new unique account number for that customer.
+Next, the web service packages the response into another SOAP message, which it sends back to the client program in response to its HTTP request.
+The client program unpacks the SOAP message to obtain the results of the account registration process.
+
+REST (Representational State Transfer) is an architectural style for developing web services.
+REST is popular due to its simplicity and the fact that it builds upon existing systems and features of the internet's HTTP in order to achieve its objectives,
+as opposed to creating new standards, frameworks and technologies.
+
+SOAP vs REST
+SOAP is definitely the heavyweight choice for Web service access. It provides the following advantages when compared to REST:
+Language, platform, and transport independent (REST requires use of HTTP)
+Works well in distributed enterprise environments (REST assumes direct point-to-point communication)
+Standardized
+Provides significant pre-build extensibility in the form of the WS* standards
+Built-in error handling
+Automation when used with certain language products
+REST is easier to use for the most part and is more flexible. It has the following advantages when compared to SOAP:
+No expensive tools require to interact with the Web service
+Smaller learning curve (Doesn't require much knowledge about how web service is built)
+Efficient (SOAP uses XML for all messages, REST can use smaller message formats such as JSON, HTML etc.)
+Fast (no extensive processing required)
+Closer to other Web technologies in design philosophy
+Need ACID Transactions over a service, you’re going to need SOAP. While REST supports transactions, it isn’t as comprehensive and isn’t ACID compliant.
+Rest doesn’t have a standard messaging system and expects clients to deal with communication failures by retrying.
+SOAP has successful/retry logic built in and provides end-to-end reliability even through SOAP intermediaries.
+SOAP: Request and Response - XML
+REST: Request - URLs/URIs, Response - XML, JSON, HTML etc.
+Amazon uses both SOAP and REST. SOAP is developed by Microsoft.
