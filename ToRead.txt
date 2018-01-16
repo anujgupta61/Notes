@@ -1,0 +1,19 @@
+Client sever arch
+web services?
+rest vs soap
+build tools -> maven and gradle
+
+spring
+{
+Spring ORM,
+Spring MVC
+Dependency Injection DI , IOC
+autowired & resource,
+controllers,
+beans,
+pojo,
+servlet,
+dispatcher servlet in spring
+tomcat webcontainers,
+spring webapp  (impl : xml based / java based config)
+}
