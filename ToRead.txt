@@ -1,13 +1,13 @@
 Client sever arch
 web services?
-rest vs soap
+rest vs soap (How REST replaces SOAP features: Security, Error handling, Atomic transaction; Scenarios)
 build tools -> maven and gradle
-
 spring
 {
-Spring ORM,
-Spring MVC
 Dependency Injection DI , IOC
+Spring ORM,
+
+Spring MVC
 autowired & resource,
 controllers,
 beans,
@@ -17,3 +17,5 @@ dispatcher servlet in spring
 tomcat webcontainers,
 spring webapp  (impl : xml based / java based config)
 }
+
+API + RESTful APIs

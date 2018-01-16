@@ -114,19 +114,77 @@ Overriding: Setter injection overrides the constructor injection. If we use both
 Changes: We can easily change the value by setter injection. It doesn't create a new bean instance always like constructor.
           So setter injection is flexible than constructor injection.
 
-Autowiring in Spring - (Read again)
+Autowiring in Spring -
 Autowiring feature of spring framework enables you to inject the object dependency implicitly. It internally uses setter or constructor injection.
 Autowiring can't be used to inject primitive and string values. It works with reference only.
 It requires the less code because we don't need to write the code to inject the dependency explicitly.
 No control of programmer.
 Autowiring Modes -
-no:	It is the default autowiring mode. It means no autowiring bydefault.
+no:	It is the default autowiring mode. It means no autowiring by default.
       <bean id="a" class="org.sssit.A" autowire="no"></bean>
 byName:	The byName mode injects the object dependency according to name of the bean. In such case, property name and bean name must be same.
         It internally calls setter method.
         <bean id="a" class="org.sssit.A" autowire="byName"></bean>
 byType:	The byType mode injects the object dependency according to type. So property name and bean name can be different. It internally calls setter method.
         <bean id="a" class="org.sssit.A" autowire="byType"></bean>
-constructor:	The constructor mode injects the dependency by calling the constructor of the class. It calls the constructor having large number of parameters.
+constructor: The constructor mode injects the dependency by calling the constructor of the class. It calls the constructor having large number of parameters.
           <bean id="a" class="org.sssit.A" autowire="constructor"></bean>
 autodetect:	It is deprecated since Spring 3.
+
+Dependency Injection with Factory Method -
+Spring framework provides facility to inject bean using factory method. To do so, we can use two attributes of bean element.
+    factory-method: represents the factory method that will be invoked to inject the bean.
+    factory-bean: represents the reference of the bean by which factory method will be invoked. It is used if factory method is non-static.
+A method that returns instance of a class is called factory method.
+    public static A getA() { // factory method
+      return new A();
+    }
+There can be three types of factory method:
+1) A static factory method that returns instance of its own class. It is used in singleton design pattern.
+    <bean id="a" class="com.javatpoint.A" factory-method="getA"></bean>
+2) A static factory method that returns instance of another class. It is used instance is not known and decided at runtime.
+    <bean id="b" class="com.javatpoint.A" factory-method="getB"></bean>
+3) A non-static factory method that returns instance of another class. It is used instance is not known and decided at runtime.
+    <bean id="a" class="com.javatpoint.A"></bean>
+    <bean id="b" class="com.javatpoint.A" factory-method="getB" factory-bean="a"></bean>
+
+ORM (Object-relational mapping) - Saving objects in table of Relational database. Hiberate (An implementation of JPA) and JPA are frameworks for ORM.
+Spring with ORM Frameworks -
+Spring provides API to easily integrate Spring with ORM frameworks such as Hibernate, JPA(Java Persistence API), JDO(Java Data Objects), Oracle Toplink and iBATIS.
+Advantages of ORM Frameworks with Spring - Less coding is required, Easy to test, Better exception handling, Integrated transaction management
+Hibernate and Spring Integration:
+In hibernate framework, we provide all the database information hibernate.cfg.xml file.
+But if we are going to integrate the hibernate application with spring, we don't need to create the hibernate.cfg.xml file.
+We can provide all the information in the applicationContext.xml file.
+The Spring framework provides HibernateTemplate class,
+so you don't need to follow so many steps like create Configuration, BuildSessionFactory, Session, beginning and committing transaction etc.
+Spring Data JPA:
+Spring Data JPA API provides JpaTemplate class to integrate spring application with JPA.
+JPA (Java Persistent API) is the sun specification for persisting objects in the enterprise application.
+It is currently used as the replacement for complex entity beans.
+The implementation of JPA specification are provided by many vendors such as: Hibernate, Toplink, iBatis, OpenJPA etc.
+
+MVC (Model-View-Controller) -
+The Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
+Each of these components are built to handle specific development aspects of an application.
+MVC is one of the most frequently used industry-standard web development framework to create scalable and extensible projects.
+Following are the components of MVC −
+Model: The Model component corresponds to all the data-related logic that the user works with.
+View: The View component is used for all the UI logic of the application.
+Controller: Controllers act as an interface between Model and View components to process all the business logic and incoming requests,
+            manipulate data using the Model component and interact with the Views to render the final output.
+In Spring Web MVC, DispatcherServlet class works as the front controller. It is responsible to manage the flow of the spring mvc application.
+The @Controller annotation is used to mark the class as the controller in Spring 3.
+The @RequestMapping annotation is used to map the request url. It is applied on the method.
+Flow of Spring Web MVC:
+All the incoming request is intercepted by the DispatcherServlet that works as the front controller.
+The DispatcherServlet gets entry of handler mapping from the xml file and forwards the request to the controller. The controller returns an object of ModelAndView.
+The DispatcherServlet checks the entry of view resolver in the xml file and invokes the specified view component.
+There are given 7 steps for creating the spring MVC application. The steps are as follows:
+      Create the request page (optional)
+      Create the controller class
+      Provide the entry of controller in the web.xml file
+      Define the bean in the xml file
+      Display the message in the JSP page
+      Load the spring core and mvc jar files
+      Start server and deploy the project
