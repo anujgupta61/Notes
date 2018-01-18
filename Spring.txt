@@ -188,3 +188,10 @@ There are given 7 steps for creating the spring MVC application. The steps are a
       Display the message in the JSP page
       Load the spring core and mvc jar files
       Start server and deploy the project
+
+Types of Configuration -
+XML based configuration: Beans initialization/injection using XML files
+Annotation based configuration: Beans initialization/injection using JAVA annotations
+JAVA based configuration: Everything (both beans initialization/injection and other setup/configuration) is done using JAVA annotations
+
+Spring uses single thread and context for initializing all beans.
