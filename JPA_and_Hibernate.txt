@@ -1,0 +1,61 @@
+JPA (JAVA PERSISTENCE API) -
+It forms a bridge between object models (Java program) and relational models (database program).
+Java Persistence API is a collection of classes and methods to persistently store the vast amounts of data into a database which is provided by the Oracle Corporation.
+To reduce the burden of writing codes for relational object management, a programmer follows the 'JPA Provider' framework, which allows easy interaction with database instance. Here the required framework is taken over by JPA.
+Earlier versions of EJB, defined the persistence layer combined with the business logic layer using javax.ejb.EntityBean Interface.
+While introducing EJB 3.0, the persistence layer was separated and specified as JPA 1.0 (Java Persistence API).
+	Presentation layer 	 <--->	Business layer 	 <--->	JPA layer (Persistance layer) 	 <--->	Database
+
+JPA Providers - 
+JPA is an open source API, therefore various enterprise vendors such as Oracle, Redhat, Eclipse, etc. provide new products by adding the JPA persistence flavor in them. Some of these products include:
+	Hibernate
+	Eclipselink
+	Toplink
+	Spring Data JPA
+
+Java Persistence API is a source to store business entities as relational entities. It shows how to define a Plain Oriented Java Object (POJO) as an entity and how to manage entities with relations.
+
+Class level architecture of JPA -
+	EntityManagerFactory: This is a factory class of EntityManager. It creates and manages multiple EntityManager instances.
+	EntityManager: It is an Interface. It manages the persistence operations on objects. It works like a factory for Query instance.
+	Entity: Entities are the persistence objects, stored as records in the database.
+	EntityTransaction: It has one-to-one relationship with the EntityManager. For each EntityManager, operations are maintained by the EntityTransaction class.
+	Persistence: This class contains static methods to obtain the EntityManagerFactory instance.
+	Query: This interface is implemented by each JPA vendor to obtain the relational objects that meet the criteria.
+
+In the above architecture, the relations between the classes and interfaces belong to the javax.persistence package.
+
+For Object-relational mapping, we can use either XML or annotations. Some annotations are given below -
+	@Entity: Declares the class as an entity or a table.
+	@Table: Declares table name.
+	@Basic: Specifies non-constraint fields explicitly.
+	@Embedded: Specifies the properties of class or an entity whose value is an instance of an embeddable class.
+	@Id: Specifies the property, used for identity (primary key of a table) of the class.
+	@GeneratedValue: Specifies how the identity attribute can be initialized such as automatic, manual, or value taken from a sequence table.
+	@Transient: Specifies the property that is not persistent, i.e., the value is never stored in the database.
+	@Column: Specifies the column attribute for the persistence property. 
+
+Hibernate -
+ORM stands for Object-Relational Mapping (ORM) is a programming technique for converting data between relational databases and object oriented programming languages such as Java, C#, etc.
+Hibernate is an Object-Relational Mapping(ORM) solution for JAVA. It is an open source persistent framework.
+Hibernate sits between traditional Java objects and database server to handle all the works in persisting those objects based on the appropriate O/R mechanisms and patterns.
+
+Hibernate has a layered architecture which helps the user to operate without having to know the underlying APIs. Hibernate makes use of the database and configuration data to provide persistence services (and persistent objects) to the application.
+Following is a detailed view of the Hibernate Application Architecture with its important core classes -
+	Java Application (Persistent object) 	<--->	Hibernate (Configuration, SessionFactory etc.)	<--->	(JTA + JDBC + JNDI)	<---> Database
+
+Configuration Object: 
+It is the first Hibernate object you create in any Hibernate application. It is usually created only once during application initialization. The Configuration object provides two keys components - Database Connection (through files hibernate.properties and hibernate.cfg.xml) and Class Mapping Setup.
+SessionFactory Object: 
+Configuration object is used to create a SessionFactory object which in turn configures Hibernate for the application using the supplied configuration file and allows for a Session object to be instantiated. The SessionFactory is a thread safe object (possible for multiple threads to simultaneously access the same method or multiple methods in that object) and used by all the threads of an application. The SessionFactory is a heavyweight object; it is usually created during application start up and kept for later use. You would need one SessionFactory object per database using a separate configuration file.
+Session Object:
+A Session is used to get a physical connection with a database. The Session object is lightweight and designed to be instantiated each time an interaction is needed with the database. Persistent objects are saved and retrieved through a Session object. The session objects should not be kept open for a long time because they are not usually thread safe and they should be created and destroyed as needed.
+Transaction Object:
+A Transaction represents a unit of work with the database and most of the RDBMS supports transaction functionality. Transactions in Hibernate are handled by an underlying transaction manager and transaction (from JDBC or JTA). This is an optional object and Hibernate applications may choose not to use this interface, instead managing transactions in their own application code.
+Query Object: 
+Query objects use SQL or Hibernate Query Language (HQL) string to retrieve data from the database and create objects. A Query instance is used to bind query parameters, limit the number of results returned by the query, and finally to execute the query.
+Criteria Object:
+Criteria objects are used to create and execute object oriented criteria queries to retrieve objects.
+
+JPA is just a specification (there is no implementation). We can annotate our classes with JPA annotations, however without an implementation nothing will happen.
+Hibernate is an implementation of JPA specification.
