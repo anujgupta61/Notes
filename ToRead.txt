@@ -19,3 +19,7 @@ spring webapp  (impl : xml based / java based config)
 API + RESTful APIs
 web services?
 rest vs soap (How REST replaces SOAP features: Security, Error handling, Atomic transaction; Scenarios)
+
+SSO - What and Why
+Definition (Uses)
+LDAP, ADFS

@@ -1,0 +1,53 @@
+Single Sign On (SSO) -
+Single Sign On (SSO) is a type of authentication in which a user logs in to one system and is automatically granted access to other services.
+
+Single Sign On is typically found in enterprise environments where employees access numerous apps and services on a daily basis. Rather than having an employee create a separate set of credentials for each app, they simply login once and can access any app the IT administrator has given
+them access to.
+
+Take Google for example. Upon logging in to one Google service such as Gmail, you are automatically authenticated to YouTube, AdSense, Google Analytics, and other Google apps. Likewise, if you log out of your Gmail or other Google apps, you are automatically logged out of all the apps.
+
+Before explaining how Single Sign On works, let's take a brief look at the history of authentication and identity management -
+Username and Password
+Social login
+Passwordless (OTP)
+Multifactor Authentication
+
+Single Sign On enables a user to login with one of the above mentioned authentication workflows and access multiple applications. This is possible through identity federation and a centralized authentication server. In a non-SSO application, a user will login and their credentials will be sent to the backend system for verification. This backend system is usually the actual application. In the SSO use case, the user credentials are sent to a centralized authentication server, and upon verification, this centralized server grants the user the right to access the application they are attempting to log in to.
+
+Federated identity management (FIM) is an arrangement that can be made among multiple enterprises that lets subscribers use the same identification data to obtain access to the networks of all enterprises in the group. The use of such a system is sometimes called identity federation.
+
+See diagrams of Non-SSO and SSO
+
+Modern identity management is concerned with authentication, authorization, and management of users within a system or organization.
+Single Sign On can provide a great experience that will keep the end-users happy while providing strong security measures that can be implemented across an entire organization. Since in an SSO implementation there is a single source of identity, IT administrators can have a central system for enforcing password requirements, spotting authentication anomalies, and so on.
+Single Sign On aims to solve the authorization component of modern identity by providing a centralized source of truth for each individual user. Once a user is authenticated, the identity provider can send each application the users identity and permissions for each application. IT administrators now have a single location where they can manage user roles and permissions for the entire organization. This makes it
+easier to audit and ensure the right users have the right access at all times.
+In an SSO environment, on day one the employee is provided with a set of credentials that are mapped to a user account in a centralized database. The IT administrator grants the user permissions to the apps that their boss has approved for them. Once the employee is promoted, the IT admin simply updates the user account with new roles and permissions. When the user finally decides to leave the organization, the IT administrator can in one fell swoop disable access to all of the organizations resources for that particular account.
+
+Lightweight Directory Access Protocol (LDAP):
+The Lightweight Directory Access Protocol (LDAP) is an application protocol, used for accessing and maintaining distributed directory information services over an Internet Protocol (IP) network. The LDAP protocol allows access to a centralized directory of credentials which can be shared amongst multiple applications.
+LDAP is a "lightweight" (smaller amount of code) version of Directory Access Protocol (DAP), which is part of X.500, a standard for directory services in a network. LDAP is lighter because in its initial version it did not include security features.
+Microsoft includes it as part of what it calls Active Directory in a number of products including Outlook Express.
+In a network, a directory tells you where in the network something is located. On TCP/IP networks (including the Internet), the domain name system (DNS) is the directory system used to relate the domain name to a specific network address (a unique location on the network).
+An LDAP directory is organized in a simple "tree" hierarchy consisting of the following levels:
+The root directory, Countries, Organizations, Organizational units, Individuals 
+An LDAP directory can be distributed among many servers. Each server can have a replicated version of the total directory that is synchronized periodically. An LDAP server is called a Directory System Agent (DSA). An LDAP server that receives a request from a user takes responsibility for the request, passing it to other DSAs as necessary, but ensuring a single coordinated response for the user.
+LDAP, Lightweight Directory Access Protocol, is an Internet protocol that email and other programs use to look up information from a server.
+Source - http://www.gracion.com/server/whatldap.html
+		https://stackoverflow.com/questions/239385/what-is-ldap-used-for
+
+Active Directory Federation Services (ADFS):
+It is a feature of the Windows Server operating system (OS) that extends end users' single sign-on (SSO) access to applications and systems outside the corporate firewall.
+Active Directory is Microsoft's trademarked directory service, an integral part of the Windows 2000 architecture. Active Directory is a centralized and standardized system that automates network management of user data, security, and distributed resources, and enables interoperation with other directories. Active Directory is designed especially for distributed networking environments.
+It works by having a single site (site A) that hosts the ADFS / ADFS proxy servers, which has access to the credentials (usually by communicating with an Active Directory Domain Controller). It is then given a trust between other sites (sites B & C) that require authenticating through the ADFS.
+
+When a user attempts to access site B in their browser, the site redirects the user to the ADFS-proxy website (site A) which asks for their username & password, authenticates them, returns a set of cookies for remembering them, and redirects them back to the site B, along with an access token.
+
+If the user then attempts to visit site C, they will also get redirected to site A for authentication from the ADFS-proxy website. If the right cookies exist, the user will not be required to enter their password again, but get instantly redirected back to site C with a token.
+
+The ADFS-proxy site is the one that is usually accessible from the internet. However the ADFS itself is not. The ADFS is generally a separate server from the ADFS-proxy.
+
+ADFS Server
+Server that links to the credentials, and has the claims configuration as well as the trusts. Generally not publicly accessible.
+ADFS Proxy Server
+Server that hosts the IIS instance that has the login pages for the websites requiring authentication. Communicates back to the ADFS when requiring authentication. Generally publicly accessible.
